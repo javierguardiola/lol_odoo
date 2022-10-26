@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="Heroes_action" model="ir.actions.act_window">
+	<field name="name">Heroes</field>
+	<field name="res_model">lol.heroes</field>
+	<field name="view_mode">tree,form</field>
+    </record>
+<record id="Heroes_form" model="ir.ui.view">
+    <field name="name">heroes.form</field>
+    <field name="model">lol.heroes</field>
+    <field name="arch" type="xml">
+	<form string="Heroes">
+	    <group>
+		<field name="name"/>
+	    </group>
+	</form>
+    </field>
+    </record>
+    <record id="Debilidades_action" model="ir.actions.act_window">
+	<field name="name">Heroes</field>
+	<field name="res_model">lol.debilidades</field>
+	<field name="view_mode">tree,form</field>
+    </record>
+<menuitem
+	id="lol_root_menu"
+	name="LOL"
+	sequence="10"/>
+<menuitem
+	id="heroes_menu"
+	name="heroes"
+	action="Heroes_action"
+	parent="lol_root_menu"
+	sequence="10"/>
+<menuitem name="Debilidades" id="heroes_menu" parent="lol_root_menu" action="Debilidades_action"/>
+</odoo>
