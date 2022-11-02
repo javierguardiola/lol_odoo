@@ -5,6 +5,13 @@
 	<field name="res_model">lol.heroes</field>
 	<field name="view_mode">tree,form</field>
     </record>
+    <!-- add batallas act_windows -->
+    <record id="batallas_action" model="ir.actions.act_window">
+	<field name="name">Batallas</field>
+	<field name="res_model">lol.batallas</field>
+	<field name="view_mode">tree,form</field>
+    </record>
+
 <record id="Heroes_form" model="ir.ui.view">
     <field name="name">heroes.form</field>
     <field name="model">lol.heroes</field>
@@ -17,7 +24,7 @@
     </field>
     </record>
     <record id="Debilidades_action" model="ir.actions.act_window">
-	<field name="name">Heroes</field>
+	<field name="name">Debilidades</field>
 	<field name="res_model">lol.debilidades</field>
 	<field name="view_mode">tree,form</field>
     </record>
@@ -29,7 +36,8 @@
 	id="heroes_menu"
 	name="heroes"
 	action="Heroes_action"
-	parent="lol_root_menu"
-	sequence="10"/>
-<menuitem name="Debilidades" id="heroes_menu" parent="lol_root_menu" action="Debilidades_action"/>
+	parent="lol_root_menu"/>
+<menuitem name="Debilidades" id="debilides_menu" parent="lol_root_menu" action="Debilidades_action"/>
+    <!-- add batallas menuitem -->
+    <menuitem id="batallas_menu" name="Batallas" parent="lol_root_menu" action="batallas_action" />
 </odoo>
