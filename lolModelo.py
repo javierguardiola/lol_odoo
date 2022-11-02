@@ -5,7 +5,7 @@ class heroes(models.Model):
 
     name = fields.Char()
     debilidades_id = fields.One2many(comodel_name='lol.debilidades', inverse_name='heroe_id', string="Debilidades")
-    batalles_id = fields.One2many(comodel_name='lol.batalles', inverse_name='heroe_id', string="Batalles")
+    batalles_id = fields.One2many(comodel_name='lol.batallas', inverse_name='heroe_id', string="Batalles")
 
 class villanos(models.Model):
     _name = 'lol.villanos' #la info se guarda en la tabla lol_villanos
