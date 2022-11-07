@@ -9,8 +9,24 @@
     <record id="batallas_action" model="ir.actions.act_window">
 	<field name="name">Batallas</field>
 	<field name="res_model">lol.batallas</field>
-	<field name="view_mode">tree,form</field>
+	<field name="view_mode">tree,form,calendar</field>
     </record>
+    
+    <record id="Batallas_calendar" model="ir.ui.view">
+	<field name="name">Batallas Calendar</field>
+	<field name="model">lol.batallas</field>
+	<field name="type">calendar</field>
+	<field name="arch" type="xml">
+	    <calendar string="Batallas" date_start="fecha">
+		<field name="name"/>
+		<field name="fecha"/>
+	    </calendar>
+	</field>
+    </record>
+    
+    <menuitem id="menu_lol" name="LoL" />
+    <menuitem id="menu_heroes" name="Heroes" parent="menu_lol" action="Heroes_action"/>
+    <menuitem id="menu_batallas" name="Batallas" parent="menu_lol" action="batallas_action"/>
 
 <record id="Heroes_form" model="ir.ui.view">
     <field name="name">heroes.form</field>
