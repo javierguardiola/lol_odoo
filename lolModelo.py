@@ -20,6 +20,7 @@ class batallas(models.Model):
     heroe_id = fields.Many2one(comodel_name='lol.heroes', string="Heroe")
     villano_id = fields.Many2one(comodel_name='lol.villanos', string="Villano")
     fecha = fields.Date()
+    lugar = fields.Char()
 
 class debilidades(models.Model):
     _name = 'lol.debilidades'
