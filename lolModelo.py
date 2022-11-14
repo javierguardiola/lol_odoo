@@ -36,6 +36,13 @@ class Campeon(models.Model):
     defensa = fields.Integer(string='Defensa')
     magia = fields.Integer(string='Magia')
 
+class Mapa(models.Model):
+    _description = 'Mapas de League of Legends'
+    _inherit = 'lol.base'
+
+    width = fields.Integer(string='Ancho')
+    height = fields.Integer(string='Alto')
+
 
 class heroes(models.Model):
     _name = 'lol.heroes' #la info se guarda en la tabla lol_heroes
