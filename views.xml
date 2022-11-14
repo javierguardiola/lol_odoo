@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+  <!-- add lol base form -->
+  <record id="view_lol_base_form" model="ir.ui.view">
+    <field name="name">lol.base.form</field>
+    <field name="model">lol.base</field>
+    <field name="arch" type="xml">
+      <form string="LOL Base">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="description"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- mapa model inherits from lol base form -->
+  <record id="view_lol_mapa_form" model="ir.ui.view">
+    <field name="name">lol.mapa.form</field>
+    <field name="model">lol.mapa</field>
+    <field name="inherit_id" ref="view_lol_base_form"/>
+    <field name="arch" type="xml">
+      <field name="description" position="after">
+        <field name="width"/>
+        <field name="height"/>
+      </field>
+    </field>
+  </record>
+
+  <!-- add mapa act_window -->
+  <record id="mapa_action" model="ir.actions.act_window">
+    <field name="name">Mapas</field>
+    <field name="res_model">lol.mapa</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
     <record id="Heroes_action" model="ir.actions.act_window">
 		<field name="name">Heroes</field>
 		<field name="res_model">lol.heroes</field>
@@ -109,4 +146,6 @@
 <menuitem name="Debilidades" id="debilides_menu" parent="lol_root_menu" action="Debilidades_action"/>
     <!-- add batallas menuitem -->
     <menuitem id="batallas_menu" name="Batallas" parent="lol_root_menu" action="batallas_action" />
+    <!-- add mapa menuitem -->
+    <menuitem id="mapa_menu" name="Mapa" parent="lol_root_menu" action="mapa_action" />
 </odoo>
