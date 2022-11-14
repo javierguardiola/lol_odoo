@@ -119,7 +119,7 @@
 		<field name="arch" type="xml">
 			<form string="Villanos">
 				<group>
-					<field name="name"/>
+					<field name="nombre"/>
 				</group>
 			</form>
 		</field>

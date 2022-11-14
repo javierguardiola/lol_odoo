@@ -37,6 +37,7 @@ class Campeon(models.Model):
     magia = fields.Integer(string='Magia')
 
 class Mapa(models.Model):
+    _name = 'lol.mapa'
     _description = 'Mapas de League of Legends'
     _inherit = 'lol.base'
 
@@ -53,8 +54,8 @@ class heroes(models.Model):
 
 class villanos(models.Model):
     _name = 'lol.villanos' #la info se guarda en la tabla lol_villanos
-
-    name = fields.Char()
+    _rec_name = 'nombre'
+    nombre = fields.Char()
     batallas_id = fields.One2many(comodel_name='lol.batallas', inverse_name='villano_id', string="Batallas")
 
 class batallas(models.Model):
