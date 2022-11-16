@@ -1,4 +1,7 @@
 from odoo import models, fields
+#add validationerror import
+from odoo.exceptions import ValidationError
+
 
 
 class Base(models.Model):
@@ -51,6 +54,30 @@ class heroes(models.Model):
     name = fields.Char()
     debilidades_id = fields.One2many(comodel_name='lol.debilidades', inverse_name='heroe_id', string="Debilidades")
     batalles_id = fields.One2many(comodel_name='lol.batallas', inverse_name='heroe_id', string="Batalles")
+    edad = fields.Integer(string='Edad')
+    altura = fields.Integer(string='Altura')
+    peso = fields.Integer(string='Peso')
+    anno_nacimiento = fields.Integer(string='Fecha de nacimiento', compute='_calc_nac_year')
+
+    def _calc_nac_year(self):
+        for record in self:
+            record.anno_nacimiento = date.now().year - record.edad) 
+
+
+    #validate eda > 18
+    @api.constrains('edad')
+    def _check_edad(self):
+        for record in self:
+            if record.edad < 18:
+                raise ValidationError("La edad debe ser mayor de 18")
+
+    #on change altura peso calcular imc
+    @api.onchange('peso', 'altura')
+    def _onchange_peso(self):
+        for record in self:
+            if record.peso > 0 and record.altura > 0:
+                record.imc = record.peso / (record.altura * record.altura)
+
 
 class villanos(models.Model):
     _name = 'lol.villanos' #la info se guarda en la tabla lol_villanos

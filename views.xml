@@ -109,6 +109,12 @@
 			<form string="Heroes">
 				<group>
 					<field name="name"/>
+          <field name="edad"/>
+          <field name="altura"/>
+          <field name="peso"/>
+          <field name="imc"/>
+          <field name="anno_nacimiento"/>
+
 				</group>
 			</form>
 		</field>
