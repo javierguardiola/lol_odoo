@@ -61,7 +61,7 @@ class heroes(models.Model):
 
     def _calc_nac_year(self):
         for record in self:
-            record.anno_nacimiento = date.now().year - record.edad) 
+            record.anno_nacimiento = date.now().year - record.edad 
 
 
     #validate eda > 18
