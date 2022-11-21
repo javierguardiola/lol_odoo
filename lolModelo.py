@@ -1,6 +1,9 @@
+from datetime import date
 from odoo import models, fields
 #add validationerror import
 from odoo.exceptions import ValidationError
+# add api import
+from odoo import api
 
 
 
@@ -61,7 +64,7 @@ class heroes(models.Model):
 
     def _calc_nac_year(self):
         for record in self:
-            record.anno_nacimiento = date.now().year - record.edad) 
+            record.anno_nacimiento = (date.now().year - record.edad) 
 
 
     #validate eda > 18
