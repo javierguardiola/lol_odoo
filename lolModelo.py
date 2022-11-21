@@ -1,6 +1,6 @@
-from odoo import models, fields
-#add validationerror import
+from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+import datetime
 
 
 
@@ -55,13 +55,14 @@ class heroes(models.Model):
     debilidades_id = fields.One2many(comodel_name='lol.debilidades', inverse_name='heroe_id', string="Debilidades")
     batalles_id = fields.One2many(comodel_name='lol.batallas', inverse_name='heroe_id', string="Batalles")
     edad = fields.Integer(string='Edad')
-    altura = fields.Integer(string='Altura')
+    altura = fields.Integer(string='Altura en cm')
     peso = fields.Integer(string='Peso')
+    imc = fields.Integer(string='imc')
     anno_nacimiento = fields.Integer(string='Fecha de nacimiento', compute='_calc_nac_year')
 
     def _calc_nac_year(self):
         for record in self:
-            record.anno_nacimiento = date.now().year - record.edad 
+            record.anno_nacimiento = datetime.datetime.now().year - record.edad
 
 
     #validate eda > 18
@@ -74,9 +75,8 @@ class heroes(models.Model):
     #on change altura peso calcular imc
     @api.onchange('peso', 'altura')
     def _onchange_peso(self):
-        for record in self:
-            if record.peso > 0 and record.altura > 0:
-                record.imc = record.peso / (record.altura * record.altura)
+        if self.peso > 0 and self.altura > 0:
+            self.imc = self.peso / ((self.altura/100) * (self.altura/100))
 
 
 class villanos(models.Model):
